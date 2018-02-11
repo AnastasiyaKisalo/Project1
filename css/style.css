@@ -12,6 +12,38 @@
     color: #333;
 }
 
+nav {
+	z-index: 2;
+}
+
+.main {
+	z-index: 1;
+}
+
+.navbar-brand {
+	  /* z-index: 1; */
+}
+.inp {
+  padding: 10px;
+  font-size: 30px;
+  border: 10px solid rgba(255, 255, 255, 0.5);
+  -moz-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) inset, 0 2px 10px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) inset, 0 2px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25) inset, 0 2px 10px rgba(0, 0, 0, 0.25);
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.5);
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  outline: none;
+  color: #333;
+  width: 80%;
+  position: absolute;
+  bottom: 0;
+  left: 100px;
+}
+
 body {
 	background-color: #f8f9fa;
 }
@@ -70,4 +102,506 @@ body {
 
 footer {
 	padding: 20px;
+}
+
+@keyframes slideInRight {
+  0% {
+    right: 0;
+    visibility: visible; }
+  100% {
+    right: -300px; } }
+@keyframes slideOutRight {
+  0% {
+    right: 0; }
+  100% {
+    right: -300px;
+    visibility: hidden; } }
+* {
+  box-sizing: border-box; }
+
+body:after {
+  background: white;
+  content: '';
+  height: 100%;
+  right: 0;
+  opacity: 0;
+  overflow: auto;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  transition: all 0.4s linear;
+  width: 100%; }
+body.open {
+  overflow: hidden; }
+body.open:after {
+  opacity: 1;
+  visibility: visible; }
+
+.b-nav {
+    position: absolute;
+    z-index: 11;
+    right: 0;
+    height: 100%;
+    width: 300px;
+    background-color: #fff;
+  }
+  .b-nav:not(.open) {
+    visibility: hidden; }
+  .b-nav li {
+    color: #444444;
+    list-style-type: none;
+    padding: 10px;
+    text-align: left; }
+  .b-nav li:not(.open) {
+    animation-duration: 0.1s;
+    animation-fill-mode: both;
+    animation-name: slideOutRight; }
+  .b-nav li:first-child {
+    padding-top: 120px; }
+  .b-nav.open {
+    visibility: visible;
+    }
+    .b-nav.open li {
+      animation-duration: 0.1s;
+      animation-fill-mode: both;
+      animation-name: slideInRight; }
+
+.b-link {
+  background: transparent;
+  border-left: rgba(68, 68, 68, 0) solid 2px;
+  color: #444444;
+  font-family: Helvetica-Neue, Helvetica, Arial, sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  margin-left: 30px;
+  text-decoration: none;
+  transition: all 0.2s linear;
+  width: auto; }
+  .b-link:hover, .b-link--active {
+    border-left: #444444 solid 2px;
+    padding-left: 30px; }
+
+.b-menu {
+  background: white;
+  border: white solid 2px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: inline-block;
+  height: 60px;
+  padding-left: 15.5px;
+  padding-top: 17.5px;
+  position: relative;
+  transition: all 0.2s linear;
+  user-select: none;
+  width: 60px;
+  z-index: 12; }
+  .b-menu:hover {
+    border: #444444 solid 2px; }
+
+.b-bun {
+  background: #444444;
+  position: relative;
+  transition: all 0.2s linear;
+  }
+  .b-bun--top {
+    height: 2px;
+    top: 0;
+    width: 25px; }
+  .b-bun--mid {
+    height: 2px;
+    top: 8px;
+    width: 25px; }
+  .b-bun--bottom {
+    height: 2px;
+    top: 16px;
+    width: 25px; }
+
+
+.b-container {
+  height: 60px;
+  right: 30px;
+  position: absolute;
+  top: 100px;
+  }
+  .b-container:hover:not(.open) .bun-top,
+  .b-container:hover:not(.open) .bun-mid,
+  .b-container:hover:not(.open) .bun-bottom {
+    background: white; }
+  .b-container.open .b-main {
+    border: #444444 solid 2px; }
+  .b-container.open .b-bun--top {
+    background: #444444;
+    top: 9px;
+    transform: rotate(45deg); }
+  .b-container.open .b-bun--mid {
+    opacity: 0; }
+  .b-container.open .b-bun--bottom {
+    background: #444444;
+    top: 5px;
+    transform: rotate(-45deg); }
+
+    a.button::before {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-box-shadow: #959595 0 2px 5px;
+    -moz-box-shadow: #959595 0 2px 5px;
+    border-radius: 3px;
+    box-shadow: #959595 0 2px 5px;
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    padding: 2px 0 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    }
+    
+a.button:active::before { padding: 1px 0 0; }
+
+a.button {
+    -moz-box-shadow: inset 0 0 0 1px #63ad0d;
+    -webkit-box-shadow: inset 0 0 0 1px #63ad0d;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: #eee;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#eee), to(#e2e2e2));
+    background: -moz-linear-gradient(#eee, #e2e2e2);
+    background: linear-gradient(#eee, #e2e2e2);
+    border: solid 1px #d0d0d0;
+    border-bottom: solid 3px #b2b1b1;
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 1px #f5f5f5;
+    color: #555;
+    display: inline-block;
+    font: bold 20px Arial, Helvetica, Clean, sans-serif;
+    margin: 0 30px 10px 0;
+    padding: 20px 60px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 1px 0 #fafafa;
+    }
+    
+a.button:hover {
+    background: #e4e4e4;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#e4e4e4), to(#ededed));
+    background: -moz-linear-gradient(#e4e4e4, #ededed);
+    background: linear-gradient(#e4e4e4, #ededed);
+    border: solid 1px #c2c2c2;
+    border-bottom: solid 3px #b2b1b1;
+    box-shadow: inset 0 0 0 1px #efefef; }
+    
+a.button:active {
+    background: #dfdfdf;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#dfdfdf), to(#e3e3e3));
+    background: -moz-linear-gradient(#dfdfdf, #e3e3e3);
+    background: linear-gradient(#dfdfdf, #e3e3e3);
+    border: solid 1px #959595;
+    box-shadow: inset 0 10px 15px 0 #c4c4c4;
+    top:2px;}
+
+    a.button.blue {
+    background: #abe4f8;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#abe4f8), to(#74d0f4));
+    background: -moz-linear-gradient(#abe4f8, #74d0f4);
+    background: linear-gradient(#abe4f8, #74d0f4);
+    border: solid 1px #8cc5d9;
+    border-bottom: solid 3px #589cb6;
+    box-shadow: inset 0 0 0 1px #cdeffb;
+    color: #42788e;
+    text-shadow: 0 1px 0 #b6e6f9; }
+    
+a.button.blue:hover {
+    background: #80d4f5;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#80d4f5), to(#92dbf6));
+    background: -moz-linear-gradient(#80d4f5, #92dbf6);
+    background: linear-gradient(#80d4f5, #92dbf6);
+    border: solid 1px #79acbe;
+    border-bottom: solid 3px #589cb6;
+    box-shadow: inset 0 0 0 1px #b2e6f8; }
+    
+a.button.blue:active {
+    background: #89d2ee;
+    background: -webkit-gradient(linear, 0 0, 0 bottom, from(#89d2ee), to(#84cae6));
+    background: -moz-linear-gradient(#89d2ee, #84cae6);
+    background: linear-gradient(#89d2ee, #84cae6);
+    border: solid 1px #5c8d9f;
+    box-shadow: inset 0 10px 15px 0 #79b9d2; }
+
+    .input-color {
+    	padding-top: 20px;
+    }
+
+section {
+	padding: 4% 6em 28%;
+	text-align: center;
+}
+
+div.cs-select {
+	display: inline-block;
+	vertical-align: middle;
+	position: relative;
+	text-align: left;
+	background: #fff;
+	z-index: 100;
+	width: 100%;
+	/* max-width: 500px; */
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+div.cs-select:focus {
+	outline: none; /* For better accessibility add a style for this in your skin */
+}
+
+.cs-select select {
+	display: none;
+}
+
+.cs-select span {
+	display: block;
+	position: relative;
+	cursor: pointer;
+	padding: 1em;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Placeholder and selected option */
+.cs-select > span {
+	padding-right: 3em;
+}
+
+.cs-select > span::after,
+.cs-select .cs-selected span::after {
+	speak: none;
+	position: absolute;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	transform: translateY(-50%);
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.cs-select > span::after {
+	content: '\25BE';
+	right: 1em;
+}
+
+.cs-select .cs-selected span::after {
+	content: '\2713';
+	margin-left: 1em;
+}
+
+.cs-select.cs-active > span::after {
+	-webkit-transform: translateY(-50%) rotate(180deg);
+	transform: translateY(-50%) rotate(180deg);
+}
+
+/* Options */
+.cs-select .cs-options {
+	position: absolute;
+	overflow: hidden;
+	width: 100%;
+	background: #fff;
+	visibility: hidden;
+}
+
+.cs-select.cs-active .cs-options {
+	visibility: visible;
+}
+
+.cs-select ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+
+.cs-select ul span {
+	padding: 1em;
+}
+
+.cs-select ul li.cs-focus span {
+	background-color: #ddd;
+}
+
+/* Optgroup and optgroup label */
+.cs-select li.cs-optgroup ul {
+	padding-left: 1em;
+}
+
+.cs-select li.cs-optgroup > span {
+	cursor: default;
+}
+
+@font-face {
+	font-family: 'icomoon';
+	src:url('../fonts/icomoon/icomoon.eot?-rdnm34');
+	src:url('../fonts/icomoon/icomoon.eot?#iefix-rdnm34') format('embedded-opentype'),
+		url('../fonts/icomoon/icomoon.woff?-rdnm34') format('woff'),
+		url('../fonts/icomoon/icomoon.ttf?-rdnm34') format('truetype'),
+		url('../fonts/icomoon/icomoon.svg?-rdnm34#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+div.cs-skin-underline {
+	background: transparent;
+	font-size: 1.8em;
+	width: 590px;
+}
+
+@media screen and (max-width: 30em) {
+	div.cs-skin-underline { font-size: 1.2em; }
+}
+
+.cs-skin-underline > span {
+	padding: 0.5em 3em 0.5em 0.5em;
+	border-bottom: 3px solid #000;
+	border-color: inherit;
+	font-weight: bold;
+}
+
+.cs-skin-underline > span::after {
+	font-family: 'icomoon';
+	content: '\e003';
+	right: 0.25em;
+	-webkit-transform: translate3d(0,-50%,0) rotate3d(0,0,1,45deg);
+	transform: translate3d(0,-50%,0) rotate3d(0,0,1,45deg);
+	-webkit-transition: -webkit-transform 0.5s;
+	transition: transform 0.5s;
+}
+
+.cs-skin-underline.cs-active > span::after {
+	-webkit-transform: translate3d(0,-50%,0) rotate3d(0,0,1,270deg);
+	transform: translate3d(0,-50%,0) rotate3d(0,0,1,270deg);
+}
+
+.cs-skin-underline .cs-options {
+	background: #bbc7c8;
+	opacity: 0;
+	-webkit-transition: opacity 0.3s 0.4s, visibility 0s 0.7s;
+	transition: opacity 0.3s 0.4s, visibility 0s 0.7s;
+}
+
+.cs-skin-underline.cs-active .cs-options {
+	opacity: 1;
+	-webkit-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+	/* position:  absolute; */
+}
+
+.cs-skin-underline ul span {
+	position: relative;
+	text-transform: uppercase;
+	font-size: 66%;
+	font-weight: 700;
+	letter-spacing: 1px;
+	padding: 1.2em 0.8em;
+	opacity: 0;
+	-webkit-transform: translate3d(100%,0,0);
+	transform: translate3d(100%,0,0);
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.3s;
+	transition: opacity 0.3s, transform 0.3s;
+}
+
+.cs-select ul span::after {
+	content: '';
+	opacity: 0;
+}
+
+.cs-select .cs-selected span::after {
+	font-family: 'icomoon';
+	content: '\e010';
+	opacity: 1;
+	-webkit-transition: opacity 0.3s 0.7s;
+	transition: opacity 0.3s 0.7s;
+}
+
+.cs-skin-underline ul span::before {
+	content: '';
+	position: absolute;
+	bottom: 1px;
+	left: 0;
+	height: 3px;
+	width: 100%;
+	background-color: #fff;
+	-webkit-transform: translate3d(200%,0,0);
+	transform: translate3d(200%,0,0);
+	-webkit-transition: -webkit-transform 0.3s;
+	transition: transform 0.3s;
+}
+
+.cs-skin-underline.cs-active ul span,
+.cs-skin-underline.cs-active ul span::before {
+	opacity: 1;
+	-webkit-transform: translate3d(0,0,0);
+	transform: translate3d(0,0,0);
+}
+
+.cs-skin-underline li:nth-child(5) span,
+.cs-skin-underline li:nth-child(5) span::before,
+.cs-skin-underline.cs-active li:first-child span,
+.cs-skin-underline.cs-active li:first-child span::before {
+	-webkit-transition-delay: 0s;
+	transition-delay: 0s;
+}
+
+.cs-skin-underline li:nth-child(4) span,
+.cs-skin-underline li:nth-child(4) span::before,
+.cs-skin-underline.cs-active li:nth-child(2) span,
+.cs-skin-underline.cs-active li:nth-child(2) span::before {
+	-webkit-transition-delay: 0.05s;
+	transition-delay: 0.05s;
+}
+
+.cs-skin-underline li:nth-child(3) span,
+.cs-skin-underline li:nth-child(3) span::before {
+	-webkit-transition-delay: 0.1s;
+	transition-delay: 0.1s;
+}
+
+.cs-skin-underline li:nth-child(2) span,
+.cs-skin-underline li:nth-child(2) span::before,
+.cs-skin-underline.cs-active li:nth-child(4) span,
+.cs-skin-underline.cs-active li:nth-child(4) span::before {
+	-webkit-transition-delay: 0.15s;
+	transition-delay: 0.15s;
+}
+
+.cs-skin-underline li:first-child span,
+.cs-skin-underline li:first-child span::before,
+.cs-skin-underline.cs-active li:nth-child(5) span,
+.cs-skin-underline.cs-active li:nth-child(5) span::before {
+	-webkit-transition-delay: 0.2s;
+	transition-delay: 0.2s;
+}
+
+.cs-skin-underline .cs-options li span:hover,
+.cs-skin-underline .cs-options li.cs-focus span,
+.cs-skin-underline li.cs-selected span {
+	color: #566473;
+	background: transparent;
+}
+
+#my-btn3 {
+	    margin-top: 50px;
+}
+
+.remove {
+	padding-left: 100px;
+}
+
+.delete {
+	display: none;
+}
+.modal-backdrop {
+  display: none;
 }
